@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
-export default DS.JSONAPIAdapter.extend({
+export default ApplicationAdapter.extend({
   shouldReloadRecord(store, snapshot) {
     return false;
   },
@@ -13,6 +13,7 @@ export default DS.JSONAPIAdapter.extend({
     if (Date.now() - loadedAt > 3600000) {
       return true;
     } else {
+      console.log('return cached record')
       return false;
     }
   }
